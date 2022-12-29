@@ -21,7 +21,7 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         Student newStudent = studentService.createStudent(student);
-        studentService.updateStudent(newStudent);
+//        studentService.updateStudent(newStudent);
         return ResponseEntity.ok(newStudent);
     }
 
@@ -77,5 +77,10 @@ public class StudentController {
     @GetMapping("/faculty/{id}")
     public ResponseEntity<Faculty> getFacultyStudent(@PathVariable long id) {
         return ResponseEntity.ok(studentService.findFaculty(id));
+    }
+
+    @GetMapping("/get-students-A/{letter}")
+    public ResponseEntity<List<String>> getStudentsA(@PathVariable char letter) {
+        return ResponseEntity.ok(studentService.getStudentA(letter));
     }
 }
